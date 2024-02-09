@@ -73,7 +73,7 @@ const Footer = ({ menu }: any) => {
                         <ul className={style.web_links}>
                             {menu?.menuLinksFirst?.map(({slug, title}: ILinks) =>
                                 <li key={slug?.current}>
-                                    <Link href="/[slug]" as={`/post/${slug?.current}`} 
+                                    <Link href="/[slug]" as={`/${slug?.current}`} 
                                             className={`${style.footer_link}`}
                                         >
                                             {title}
@@ -84,7 +84,7 @@ const Footer = ({ menu }: any) => {
                         <ul className={style.web_links}>
                             {menu?.menuLinksSecond?.map(({slug, title}: ILinks) =>
                                 <li key={slug?.current}>
-                                    <Link href="/[slug]" as={`/post/${slug?.current}`}
+                                    <Link href="/[slug]" as={`/${slug?.current}`}
                                             className={`${style.footer_link}`}
                                         >
                                             {title}

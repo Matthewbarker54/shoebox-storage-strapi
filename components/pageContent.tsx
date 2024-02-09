@@ -4,6 +4,7 @@ import FormExample from "./content/form";
 import TextWithImage from "./content/textWithImage";
 import Promotion from "./content/promotion";
 import { IContentField } from "@/lib/types";
+import TextBlock from "./content/textBlock";
 
 interface IPageContent {
     content: IContentField[]
@@ -19,6 +20,9 @@ const PageContent = ({ content }: IPageContent) => {
         }
         if (field?._type === "textWithIllustration") {
           return <TextWithImage key={i} {...field} />;
+        }
+        if (field?._type === "textBlock") {
+          return <TextBlock key={i} {...field} />;
         }
         if (field?._type === "promotion") {
           return <Promotion key={i} {...field} />;

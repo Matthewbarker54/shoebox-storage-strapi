@@ -55,6 +55,7 @@
   | IForm
   | ITextWithImage
   | IPromotion
+  | ITextBlock
   | undefined;
 
   export interface IPage {
@@ -91,3 +92,15 @@
     form: string,
     _type: 'form',
   }
+
+  export interface ITextBlock {
+    _type: 'textBlock',
+    heading: string;
+    content: string;
+    button: {
+      text: string;
+      url: string;
+    };
+    center: boolean;
+  }
+  
