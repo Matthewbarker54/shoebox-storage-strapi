@@ -1,7 +1,7 @@
 import styles from "./textWithLocation.module.css";
 import { ITextWithLocation } from "@/lib/types";
 import { PortableText } from "@portabletext/react";
-import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps"
+import { APIProvider, Map, Marker, useMarkerRef } from "@vis.gl/react-google-maps"
 
 const components = {
   marks: {
@@ -22,6 +22,7 @@ const components = {
 
 
 const TextWithLocation = ({ heading, excerpt, location, reverse_row }: ITextWithLocation) => {
+  // const [markerRef, marker] = useMarkerRef();
   return (
     <div className={`${styles.panel}`}>
         <div className={`${styles.content} ${reverse_row && styles.panel_reverse}`}>
@@ -47,12 +48,12 @@ const TextWithLocation = ({ heading, excerpt, location, reverse_row }: ITextWith
                 disableDefaultUI={true}
                 >
                 <Marker
+                // ref={markerRef}
                   position={{ 
                     lat: location?.mapMarkerX ? Number(location.mapMarkerX) : 0,
                     lng: location?.mapMarkerY ? Number(location.mapMarkerY) : 0 
                   }}
-                >
-                </Marker>
+                />
               </Map>
             </APIProvider>
             </div>
