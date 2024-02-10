@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import client from '../client'
+import client from '../sanity/sanity.client'
 import groq from 'groq'
 import imageUrlBuilder from '@sanity/image-url'
 

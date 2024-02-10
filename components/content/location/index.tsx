@@ -1,3 +1,4 @@
+'use client'
 import styles from "./textWithLocation.module.css";
 import { ITextWithLocation } from "@/lib/types";
 import { PortableText } from "@portabletext/react";

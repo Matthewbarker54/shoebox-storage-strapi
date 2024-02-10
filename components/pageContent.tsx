@@ -32,9 +32,9 @@ const PageContent = ({ content }: IPageContent) => {
           return <TextWithLocation key={i} {...field} />;
         }
         // Forms
-        if (field?._type === "form") {
-          return <FormExample key={i} {...field} />;
-        }
+        // if (field?._type === "form") {
+        //   return <FormExample key={i} {...field} />;
+        // }
         console.log(JSON.stringify(field, null, 2));
         return <pre key={i}>{JSON.stringify(field, null, 2)}</pre>;
       })}
