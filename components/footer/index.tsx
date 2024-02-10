@@ -16,7 +16,7 @@ const components = {
       link: ({value, children}: any) => {
         const { blank, href } = value
         return blank ?
-          <a href={href} target="_blank" rel="noopener">{children}</a>
+          <a href={href} target="_blank" rel="noreferrer">{children}</a>
           : <a href={href}>{children}</a>
       }
   
@@ -40,7 +40,7 @@ const Footer = ({ menu }: any) => {
                             <a
                                 className={style.socialIcon}
                                 target="_blank"
-                                rel="noopener"
+                                rel="noreferrer"
                                 href={menu.facebook}
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -52,7 +52,7 @@ const Footer = ({ menu }: any) => {
                             <a
                                 className={style.socialIcon}
                                 target="_blank"
-                                rel="noopener"
+                                rel="noreferrer"
                                 href={menu.twitter}
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 504.4 504.4">
@@ -64,7 +64,7 @@ const Footer = ({ menu }: any) => {
                             <a
                                 className={style.socialIcon}
                                 target="_blank"
-                                rel="noopener"
+                                rel="noreferrer"
                                 href={menu.linkedin}
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -76,7 +76,7 @@ const Footer = ({ menu }: any) => {
                             <a
                                 className={style.socialIcon}
                                 target="_blank"
-                                rel="noopener"
+                                rel="noreferrer"
                                 href={menu.linkedin}
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

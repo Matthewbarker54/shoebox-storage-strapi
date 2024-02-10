@@ -13,7 +13,7 @@ const components = {
     link: ({value, children}: any) => {
       const { blank, href } = value
       return blank ?
-        <a href={href} target="_blank" rel="noopener">{children}</a>
+        <a href={href} target="_blank" rel="noreferrer">{children}</a>
         : <a href={href}>{children}</a>
     }
 
