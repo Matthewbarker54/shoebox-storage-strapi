@@ -5,7 +5,7 @@ import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'sanity-tutorial-blog',
+  title: 'shoebox-storage',
 
   projectId: 'sgx0hyut',
   dataset: 'production',

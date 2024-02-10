@@ -37,7 +37,7 @@
   }
   
   export interface IImage {
-    alt?: string,
+    alt: string,
     asset: {
       _ref: string,
     },

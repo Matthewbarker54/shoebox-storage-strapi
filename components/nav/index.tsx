@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import style from "./nav.module.css";
 import { urlFor } from "@/lib/api";
+import Image from "next/image";
 
 const Nav = ({ menu }: any) => {
     const [isOpen, setIsOpen] = React.useState(false);
@@ -11,7 +12,7 @@ const Nav = ({ menu }: any) => {
             <div className={style.content}>
                 {menu?.logo?.asset?._ref ?
                 <Link href="/" className={style.logo}>
-                    <img src={urlFor(menu.logo.asset._ref).url()} alt={menu.logo.alt} />
+                    <Image width={500} height={500} src={urlFor(menu.logo.asset._ref).url()} alt={menu.logo.alt} />
                 </Link>
                 : null }
                 <ul className={style.web_links}>
