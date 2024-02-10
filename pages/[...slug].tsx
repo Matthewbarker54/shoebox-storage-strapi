@@ -16,7 +16,6 @@ interface IHome {
 // [...slug] will catch all routes unless it matches a subfolder name
 export default function Template({ general, page }: IHome) {
   if (!general) return <Error404 statusCode={404} />;
-  console.log(JSON.stringify(page) + ' ------ stage 1')
   return (
     <Layout general={general}>
       <PageContent content={page.pageBuilder} />

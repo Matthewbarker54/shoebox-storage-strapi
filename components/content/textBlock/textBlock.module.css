@@ -29,6 +29,20 @@
 	list-style-type: decimal;
 }
 
+.content_block a {
+	font-weight: 700;
+	color: var(--primary-clr);
+}
+
+.content_block a:hover {
+	text-decoration: underline;
+	box-shadow: none;
+}
+
+.content_block a:focus {
+	box-shadow: none;
+}
+
 .cta {
 	width: fit-content;
 	margin: 1rem auto 0;

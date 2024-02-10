@@ -29,8 +29,8 @@
       twitter: string,
       instagram: string,
       linkedin: string,
-      textFirst: string,
-      textSecond: string,
+      textFirst: IContentArray,
+      textSecond: IContentArray,
       bottomText:string,
       logo: IImage,
     },
@@ -56,6 +56,7 @@
   | ITextWithImage
   | IPromotion
   | ITextBlock
+  | ITextWithLocation
   | undefined;
 
   export interface IPage {
@@ -74,7 +75,7 @@
 
   export interface ITextWithImage {
     heading: string,
-    excerpt: string,
+    excerpt: IContentArray,
     _type: 'textWithIllustration',
     image: IImage,
     reverse_row?: boolean,
@@ -96,11 +97,37 @@
   export interface ITextBlock {
     _type: 'textBlock',
     heading: string;
-    content: string;
+    content: IContentArray;
     button: {
       text: string;
       url: string;
     };
     center: boolean;
+  }
+
+  export interface IContentArray {
+    _type: string,
+    _key: string;
+    children: {
+      _key: string,
+      _type: string,
+      text: string,
+      marks: [],
+    }[];
+    markDefs: [];
+    style: string;
+  }
+
+  export interface ITextWithLocation {
+    heading: string,
+    excerpt: IContentArray,
+    _type: 'textWithLocation',
+    location: {
+      mapCenterX: string,
+      mapCenterY: string,
+      mapMarkerX: string,
+      mapMarkerY: string,
+    }
+    reverse_row?: boolean,
   }
   

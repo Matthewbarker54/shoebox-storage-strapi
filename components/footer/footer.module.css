@@ -110,7 +110,8 @@
 	font-family: "comfortaa";
 }
 
-.list li {
+.list li,
+.list p {
 	color: #fff;
 }
 

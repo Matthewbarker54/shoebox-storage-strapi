@@ -4,6 +4,24 @@ import Link from "next/link";
 import style from "./footer.module.css";
 import { urlFor } from "@/lib/api";
 import { ILinks } from "@/lib/types";
+import { PortableText } from "@portabletext/react";
+
+const components = {
+    marks: {
+      internalLink: ({value, children}: any) => {
+        const {slug = {}} = value
+        const href = `/${slug.current}`
+        return <a href={href}>{children}</a>
+      },
+      link: ({value, children}: any) => {
+        const { blank, href } = value
+        return blank ?
+          <a href={href} target="_blank" rel="noopener">{children}</a>
+          : <a href={href}>{children}</a>
+      }
+  
+    }
+  }
 
 const Footer = ({ menu }: any) => {
     return (
@@ -71,8 +89,8 @@ const Footer = ({ menu }: any) => {
                 <div className={style.panel}>
                     <div className={style.inner}>
                         <ul className={style.web_links}>
-                            {menu?.menuLinksFirst?.map(({slug, title}: ILinks) =>
-                                <li key={slug?.current}>
+                            {menu?.menuLinksFirst?.map(({slug, title}: ILinks, i: number) =>
+                                <li key={i}>
                                     <Link href="/[slug]" as={`/${slug?.current}`} 
                                             className={`${style.footer_link}`}
                                         >
@@ -82,8 +100,8 @@ const Footer = ({ menu }: any) => {
                             )}
                         </ul>
                         <ul className={style.web_links}>
-                            {menu?.menuLinksSecond?.map(({slug, title}: ILinks) =>
-                                <li key={slug?.current}>
+                            {menu?.menuLinksSecond?.map(({slug, title}: ILinks, i:number) =>
+                                <li key={i}>
                                     <Link href="/[slug]" as={`/${slug?.current}`}
                                             className={`${style.footer_link}`}
                                         >
@@ -95,11 +113,19 @@ const Footer = ({ menu }: any) => {
                     </div>
                     <div className={style.inner}>
                         {menu?.textFirst ?
-                            <div className={style.list} dangerouslySetInnerHTML={{__html: menu.textFirst}}>
+                            <div className={style.list}>
+                                <PortableText
+                                    value={menu.textFirst}
+                                    components={components}
+                                />
                             </div>
                         : null}
                         {menu?.textSecond ?
-                            <div className={style.list} dangerouslySetInnerHTML={{__html: menu.textSecond}}>
+                            <div className={style.list}>
+                                <PortableText
+                                    value={menu.textSecond}
+                                    components={components}
+                                />
                             </div>
                         : null}
                     </div>

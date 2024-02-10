@@ -1,6 +1,25 @@
 import styles from "./textWithImage.module.css";
 import { ITextWithImage } from "@/lib/types";
 import { urlFor } from "@/lib/api";
+import { PortableText } from "@portabletext/react";
+
+const components = {
+  marks: {
+    internalLink: ({value, children}: any) => {
+      const {slug = {}} = value
+      const href = `/${slug.current}`
+      return <a href={href}>{children}</a>
+    },
+    link: ({value, children}: any) => {
+      const { blank, href } = value
+      return blank ?
+        <a href={href} target="_blank" rel="noopener">{children}</a>
+        : <a href={href}>{children}</a>
+    }
+
+  }
+}
+
 
 const TextWithImage = ({ heading, excerpt, image, reverse_row }: ITextWithImage) => {
   return (
@@ -10,8 +29,12 @@ const TextWithImage = ({ heading, excerpt, image, reverse_row }: ITextWithImage)
             {heading && <h3>{heading}</h3>}
             <div
                 className={styles.text}
-                dangerouslySetInnerHTML={{ __html: excerpt }}
-            ></div>
+            >
+            <PortableText
+              value={excerpt}
+              components={components}
+            />
+            </div>
             </div>
             <div className={styles.image}>
               {image?.asset?._ref &&

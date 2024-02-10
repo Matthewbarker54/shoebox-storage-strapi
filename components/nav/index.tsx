@@ -16,8 +16,8 @@ const Nav = ({ menu }: any) => {
                 : null }
                 <ul className={style.web_links}>
                     {menu?.menuLink?.length > 0 && menu.menuLink.map(
-                        ({ title, slug }: any) => (
-                            <li key={slug}>
+                        ({ title, slug }: any, i: number) => (
+                            <li key={i}>
                                 <Link href="/[slug]" as={`/${slug?.current}`} className={`${style.nav_link}`}>
                                     {title}
                                 </Link>
@@ -43,8 +43,8 @@ const Nav = ({ menu }: any) => {
                 ></button>
                 <ul className={style.mobile_nav_links}>
                     {menu?.menuLink?.length > 0 && menu.menuLink.map(
-                        ({ title, slug }: any) => (
-                            <li key={slug}>
+                        ({ title, slug }: any, i:number) => (
+                            <li key={i}>
                                 <Link href="/[slug]" as={`/${slug?.current}`} className={`${style.nav_link}`}>
                                     {title}
                                 </Link>

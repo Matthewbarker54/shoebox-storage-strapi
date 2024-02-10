@@ -5,6 +5,7 @@ import TextWithImage from "./content/textWithImage";
 import Promotion from "./content/promotion";
 import { IContentField } from "@/lib/types";
 import TextBlock from "./content/textBlock";
+import TextWithLocation from "./content/location";
 
 interface IPageContent {
     content: IContentField[]
@@ -26,6 +27,9 @@ const PageContent = ({ content }: IPageContent) => {
         }
         if (field?._type === "promotion") {
           return <Promotion key={i} {...field} />;
+        }
+        if (field?._type === "textWithLocation") {
+          return <TextWithLocation key={i} {...field} />;
         }
         // Forms
         if (field?._type === "form") {
