@@ -54,9 +54,9 @@
   | IHero
   | IForm
   | ITextWithImage
-  | IPromotion
   | ITextBlock
   | ITextWithLocation
+  | ITextWithVideo
   | undefined;
 
   export interface IPage {
@@ -81,10 +81,12 @@
     reverse_row?: boolean,
   }
 
-  export interface IPromotion {
-    title: string,
-    link: string,
-    _type: 'promotion',
+  export interface ITextWithVideo {
+    heading: string,
+    excerpt: IContentArray,
+    _type: 'textWithVideo',
+    video: any,
+    reverse_row?: boolean,
   }
 
   export interface IForm {

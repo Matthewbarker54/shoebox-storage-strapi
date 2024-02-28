@@ -1,13 +1,12 @@
 import blockContent from './blockContent'
 import nav from './nav'
 import footer from './footer'
-import {promotionType} from './components/promotion'
 import {formType} from './components/form'
 import {heroType} from './components/hero'
 import {imageGalleryType} from './components/imageGallery'
 import {pageType} from './page'
 import {textWithIllustrationType} from './components/textWithIllustration'
-import {videoType} from './components/video'
+import {videoType} from './components/textWithVideo'
 import {textBlockType} from './components/textBlock'
 import { textWithLocationType } from './components/textWithLocation'
 
@@ -17,7 +16,6 @@ export const schemaTypes = [
     blockContent,
     pageType,
     heroType,
-    promotionType,
     textWithIllustrationType,
     imageGalleryType,
     formType,
