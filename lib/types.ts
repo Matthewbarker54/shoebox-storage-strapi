@@ -57,6 +57,7 @@
   | IPromotion
   | ITextBlock
   | ITextWithLocation
+  | IImageGallery
   | undefined;
 
   export interface IPage {
@@ -131,3 +132,7 @@
     reverse_row?: boolean,
   }
   
+  export interface IImageGallery {
+    _type: 'gallery',
+    images: IImage[],
+  }
