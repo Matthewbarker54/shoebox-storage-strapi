@@ -3,18 +3,42 @@ import {DocumentVideoIcon} from '@sanity/icons'
 import {defineField, defineType} from 'sanity'
 
 export const videoType = defineType({
-  name: 'video',
+  name: 'textWithVideo',
   type: 'object',
   title: 'Video',
   fields: [
     defineField({
-      name: 'videoLabel',
+      name: 'heading',
       type: 'string',
     }),
     defineField({
-      name: 'url',
+      name: 'tagline',
       type: 'string',
-      title: 'URL',
+    }),
+    defineField({
+      name: 'excerpt',
+      title: 'Content',
+      type: 'blockContent',
+    }),
+    defineField({
+      title: 'Place viedo on the left side',
+      name: 'reverse_row',
+      type: 'boolean'
+    }),
+    defineField({
+      title: 'Video',
+      name: 'video',
+      type: 'file',
+      options: {
+        accept: ".mp4",
+      },
+      fields: [
+        defineField({
+          name: 'description',
+          type: 'string',
+          title: 'Description'
+        }),
+      ],
     }),
   ],
   icon: DocumentVideoIcon,

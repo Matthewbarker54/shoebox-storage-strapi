@@ -41,17 +41,12 @@ export const pageType = defineType({
           type: 'form',
         }),
         defineArrayMember({
-          name: 'video',
-          type: 'video',
+          name: 'textWithVideo',
+          type: 'textWithVideo',
         }),
         defineArrayMember({
           name: 'textBlock',
           type: 'textBlock',
-        }),
-        defineArrayMember({
-          name: 'callToAction',
-          type: 'reference',
-          to: [{type: 'promotion'}],
         }),
         defineArrayMember({
           name: 'textWithLocation',
