@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const Nav = ({ menu }: any) => {
     const [isOpen, setIsOpen] = React.useState(false);
-    
+    console.log('Nav ', menu?.menuLink)
     return (
         <nav className={style.navigation}>
             <div className={style.content}>

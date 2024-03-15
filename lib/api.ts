@@ -12,6 +12,11 @@ export const getPageData = async (slug?: string) => {
   return slug ? general[0] : general
 }
 
+export const getHomeData = async () => {
+  const homeData = await client.fetch(`*[_type == "homepage"]`).then(res => res[0])
+  return homeData
+}
+
 export const getNavData = async () => {
   const linkData = await client.fetch(`*[_type == "nav"]`).then(res => res[0])
   return linkData
