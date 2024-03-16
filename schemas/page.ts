@@ -41,7 +41,7 @@ export const pageType = defineType({
       title: "Description",
       type: "string",
       initialValue: "Site Description",
-      validation: (rule) => rule.max(155).required(),
+      validation: (rule) => rule.max(155),
     }),
     defineField({
       title: "Parent",

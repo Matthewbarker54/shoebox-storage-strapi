@@ -27,6 +27,11 @@ export const getFooterData = async () => {
   return linkData
 }
 
+export const getMetaData = async () => {
+  const metaData = await client.fetch(`*[_type == "metaData"]`).then(res => res[0])
+  return metaData
+}
+
 
 
 export const getLinksData = async (menu: any, type: string) => {
@@ -69,6 +74,7 @@ export const getLinksData = async (menu: any, type: string) => {
 }
 
 export const getMenuData = async () => {
+  const meta = await getMetaData().then(res => res)
   const nav = await getNavData().then(res => res)
   const footer = await getFooterData().then(res => res)
   const navLinks = await getLinksData(nav, 'nav').then(res => res)
@@ -76,6 +82,7 @@ export const getMenuData = async () => {
   const menuLinksSecond = await getLinksData(footer, 'footerTwo').then(res => res)
 
   return {
+    meta,
     nav: {
       ...nav,
       menuLink: navLinks,
@@ -88,6 +95,18 @@ export const getMenuData = async () => {
   }
 }
 
-export const urlFor = (source: string) => {
+export const urlForImage = (source: string) => {
   return builder.image(source)
+}
+
+export const urlForPage = async (ref: string) => {
+  const query = `*[_type == "page" && _id == '` + ref +`'] {
+    title,
+    slug
+  }`
+
+  const linkData = await client.fetch(query).then(res => {
+    console.log(res)
+  })
+  return 's'
 }

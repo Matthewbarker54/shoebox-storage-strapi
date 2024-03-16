@@ -16,11 +16,6 @@ export const textBlockType = defineType({
       type: 'blockContent',
     }),
     defineField({
-      title: 'Center text',
-      name: 'center',
-      type: 'boolean'
-    }),
-    defineField({
       name: 'button',
       type: 'object',
       title: 'Button',
@@ -28,14 +23,50 @@ export const textBlockType = defineType({
         defineField({
           name: 'text',
           type: 'string',
-          title: 'Button text',
+          title: 'Text',
         }),
         defineField({
-          name: 'url',
-          type: 'string',
-          title: 'Button url',
+          name: 'link',
+          type: 'object',
+          title: 'External link',
+          fields: [
+            {
+              name: 'href',
+              type: 'url',
+              title: 'URL',
+              validation: Rule => Rule.uri({
+                scheme: ['http', 'https', 'mailto', 'tel']
+              })
+            },
+            {
+              title: 'Open in new tab',
+              name: 'blank',
+              type: 'boolean'
+            }
+          ]
+        }),
+        defineField({
+            name: 'internalLink',
+            type: 'object',
+            title: 'Internal link',
+            fields: [
+              {
+                name: 'reference',
+                type: 'reference',
+                title: 'Reference',
+                to: [
+                  { type: 'page' },
+                  // other types you may want to link to
+                ]
+              }
+            ]
         }),
       ],
+    }),
+    defineField({
+      title: 'Center content',
+      name: 'center',
+      type: 'boolean'
     }),
   ],
   icon: BlockContentIcon,

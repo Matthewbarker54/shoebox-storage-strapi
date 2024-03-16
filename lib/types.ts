@@ -103,7 +103,15 @@
     content: IContentArray;
     button: {
       text: string;
-      url: string;
+      link?: {
+        href: string;
+        blank: boolean;
+      };
+      internalLink?: {
+        reference: {
+          _ref: string;
+        }
+      }
     };
     center: boolean;
   }

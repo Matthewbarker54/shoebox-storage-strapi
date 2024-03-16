@@ -1,18 +1,18 @@
 import React from "react";
 import Link from "next/link";
 import style from "./nav.module.css";
-import { urlFor } from "@/lib/api";
+import { urlForImage } from "@/lib/api";
 import Image from "next/image";
 
 const Nav = ({ menu }: any) => {
     const [isOpen, setIsOpen] = React.useState(false);
-    console.log('Nav ', menu?.menuLink)
+
     return (
         <nav className={style.navigation}>
             <div className={style.content}>
                 {menu?.logo?.asset?._ref ?
                 <Link href="/" className={style.logo}>
-                    <Image width={500} height={500} src={urlFor(menu.logo.asset._ref).url()} alt={menu.logo.alt} />
+                    <Image width={500} height={500} src={urlForImage(menu.logo.asset._ref).url()} alt={menu.logo.alt} />
                 </Link>
                 : null }
                 <ul className={style.web_links}>

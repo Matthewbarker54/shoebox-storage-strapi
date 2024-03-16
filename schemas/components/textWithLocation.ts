@@ -31,22 +31,22 @@ export const textWithLocationType = defineType({
         defineField({
           name: 'mapCenterX',
           type: 'string',
-          title: 'Map center X',
+          title: 'Map center latitude',
         }),
         defineField({
           name: 'mapCenterY',
           type: 'string',
-          title: 'Map center Y',
+          title: 'Map center longitude',
         }),
         defineField({
           name: 'mapMarkerX',
           type: 'string',
-          title: 'Map marker X',
+          title: 'Map marker latitude',
         }),
         defineField({
           name: 'mapMarkerY',
           type: 'string',
-          title: 'Map marker Y',
+          title: 'Map marker longitude',
         }),
       ],
     }),

@@ -1,7 +1,7 @@
 'use client'
 import styles from "./imageGallery.module.css";
 import { IImageGallery } from "@/lib/types";
-import { urlFor } from "@/lib/api";
+import { urlForImage } from "@/lib/api";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import {
@@ -34,7 +34,7 @@ const ImageGallery = ({ images }: any) => {
           {images.map((image: any, index: number) => (
             <div className={styles.embla__slide} key={index}>
               <div className={styles.embla__slide__number}>
-                <Image width={500} height={500} src={urlFor(image?.asset?._ref).url()} alt={image.alt} />
+                <Image width={500} height={500} src={urlForImage(image?.asset?._ref).url()} alt={image.alt} />
               </div>
             </div>
           ))}

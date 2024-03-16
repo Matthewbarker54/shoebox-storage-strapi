@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 import style from "./footer.module.css";
-import { urlFor } from "@/lib/api";
+import { urlForImage } from "@/lib/api";
 import { ILinks } from "@/lib/types";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
@@ -32,7 +32,7 @@ const Footer = ({ menu }: any) => {
                     <div className={style.logoWrapper}>
                         {menu?.logo?.asset?._ref ?
                         <Link href="/" className={style.logo}>
-                                <Image width={500} height={500} src={urlFor(menu.logo.asset._ref).url()} alt="Shoebox storage"  />
+                                <Image width={500} height={500} src={urlForImage(menu.logo.asset._ref).url()} alt="Shoebox storage"  />
                         </Link>
                         : null}
                     </div>

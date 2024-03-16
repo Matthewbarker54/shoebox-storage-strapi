@@ -1,6 +1,6 @@
 import styles from "./textWithVideo.module.css";
 import { ITextWithVideo } from "@/lib/types";
-import { urlFor } from "@/lib/api";
+import { urlForImage } from "@/lib/api";
 import { PortableText } from "@portabletext/react";
 
 
@@ -41,7 +41,7 @@ const TextWithVideo = ({ heading, excerpt, video, reverse_row }: ITextWithVideo)
             <div className={styles.image}>
               {video?.asset?._ref &&
                 <video width={500} height={500} controls preload="none">
-                  {/* <source src={urlFor(video.asset._ref).url()} type="video/mp4" /> */}
+                  {/* <source src={urlForImage(video.asset._ref).url()} type="video/mp4" /> */}
                   Your browser does not support the video tag.
                 </video>
               }
