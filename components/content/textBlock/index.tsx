@@ -26,6 +26,8 @@ const TextBlock = async ({ heading, content, button, center }: ITextBlock) => {
   const getLinkUrl = button?.internalLink?.reference._ref ? 
     await urlForPage(button.internalLink.reference._ref) 
     : ''
+
+  console.log(getLinkUrl)
   
   return (
     <div className={styles.panel}>

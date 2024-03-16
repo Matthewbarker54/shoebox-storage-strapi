@@ -105,8 +105,6 @@ export const urlForPage = async (ref: string) => {
     slug
   }`
 
-  const linkData = await client.fetch(query).then(res => {
-    console.log(res)
-  })
-  return 's'
+  const linkData = await client.fetch(query).then(res => res[0].slug.current)
+  return linkData
 }
