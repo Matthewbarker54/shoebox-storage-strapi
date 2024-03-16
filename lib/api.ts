@@ -7,9 +7,33 @@ const builder = imageUrlBuilder(client)
 
 export const getPageData = async (slug?: string) => {
   const query = slug ? `*[_type == "page" && slug.current == '` + slug + `']` : `*[_type == "page"]`
-  const general = await client.fetch(groq`${query}`).then(res => res)
+  const general = await client.fetch(groq`${query}`).then(res => {
+    let link = {}
+    if (slug && res[0]) {
+      res[0]?.pageBuilder?.map(async (block: any) => {
+        if (block._type === 'textBlock') {
+          link = await urlForPage(block.button?.internalLink?.reference._ref).then((res) => res)
+        }
+      })
+    }
+    
+    console.log(link, {
+      ...res[0],
+      button: {
+        ...res[0].button,
+        internalLink: link,
+      }
+    })
+    return slug && res[0] ? {
+      ...res[0],
+      button: {
+        ...res[0].button,
+        internalLink: link,
+      }
+    } : res
+  })
   
-  return slug ? general[0] : general
+  return general
 }
 
 export const getHomeData = async () => {
@@ -105,6 +129,6 @@ export const urlForPage = async (ref: string) => {
     slug
   }`
 
-  const linkData = await client.fetch(query).then(res => res[0].slug.current)
+  const linkData = await client.fetch(query).then(res => res[0]?.slug?.current)
   return linkData
 }

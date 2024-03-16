@@ -12,7 +12,7 @@ const Nav = ({ menu }: any) => {
             <div className={style.content}>
                 {menu?.logo?.asset?._ref ?
                 <Link href="/" className={style.logo}>
-                    <Image width={500} height={500} src={urlForImage(menu.logo.asset._ref).url()} alt={menu.logo.alt} />
+                    <Image width={500} height={500} src={urlForImage(menu.logo.asset._ref).url()} alt={menu.logo.alt ? menu.logo.alt : 'Logo'} />
                 </Link>
                 : null }
                 <ul className={style.web_links}>

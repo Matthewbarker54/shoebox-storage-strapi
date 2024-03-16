@@ -32,7 +32,7 @@ const Footer = ({ menu }: any) => {
                     <div className={style.logoWrapper}>
                         {menu?.logo?.asset?._ref ?
                         <Link href="/" className={style.logo}>
-                                <Image width={500} height={500} src={urlForImage(menu.logo.asset._ref).url()} alt="Shoebox storage"  />
+                                <Image width={500} height={500} src={urlForImage(menu.logo.asset._ref).url()} alt={menu.logo.alt ? menu.logo.alt : "Shoebox storage"}  />
                         </Link>
                         : null}
                     </div>

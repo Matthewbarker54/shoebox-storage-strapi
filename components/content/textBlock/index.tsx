@@ -2,7 +2,6 @@ import { ITextBlock } from "@/lib/types";
 import Link from "next/link";
 import styles from "./textBlock.module.css";
 import { PortableText } from "@portabletext/react";
-import { urlForPage } from "@/lib/api";
 
 const components = {
   marks: {
@@ -21,14 +20,9 @@ const components = {
   }
 }
 
-const TextBlock = async ({ heading, content, button, center }: ITextBlock) => {
+const TextBlock = ({ heading, content, button, center }: ITextBlock) => {
   
-  const getLinkUrl = button?.internalLink?.reference._ref ? 
-    await urlForPage(button.internalLink.reference._ref) 
-    : ''
 
-  console.log(getLinkUrl)
-  
   return (
     <div className={styles.panel}>
         <div className={`${styles.content} ${center ? styles.contentCenter : null}`}>
@@ -41,10 +35,10 @@ const TextBlock = async ({ heading, content, button, center }: ITextBlock) => {
               components={components}
             />
             </div>
-            {getLinkUrl ?
+            {button?.internalLink?.reference._ref ?
               <Link 
-                href={getLinkUrl} 
-                as={getLinkUrl} 
+                href={button.internalLink.reference._ref} 
+                as={button.internalLink.reference._ref} 
                 className={`btn primary ${styles.cta}`}
               >
                   {button.text}
