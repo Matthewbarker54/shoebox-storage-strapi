@@ -20,7 +20,7 @@ export default defineType({
     }),
     defineField({
       name: 'instagram',
-      title: 'Instgram',
+      title: 'Instagram',
       type: 'string',
     }),
     defineField({
@@ -29,7 +29,7 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'twitter',
+      name: 'twitter', 
       title: 'X (Twitter)',
       type: 'string',
     }),

@@ -21,7 +21,8 @@ const paths = pages
 }
 
 async function getData(params: any) {
-  const page = await getPageData(params.slug[0]);
+  const slug = params?.slug && params.slug.join('/');
+  const page = await getPageData(slug);
   const general = await getMenuData()
   return {
         page,

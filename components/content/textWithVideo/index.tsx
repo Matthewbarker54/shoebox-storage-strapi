@@ -1,8 +1,8 @@
-import styles from "./textWithImage.module.css";
-import { ITextWithImage } from "@/lib/types";
+import styles from "./textWithVideo.module.css";
+import { ITextWithVideo } from "@/lib/types";
 import { urlForImage } from "@/lib/api";
 import { PortableText } from "@portabletext/react";
-import Image from "next/image";
+
 
 const components = {
   marks: {
@@ -22,7 +22,8 @@ const components = {
 }
 
 
-const TextWithImage = ({ heading, excerpt, image, reverse_row }: ITextWithImage) => {
+const TextWithVideo = ({ heading, excerpt, video, reverse_row }: ITextWithVideo) => {
+  console.log(video, 'sd')
   return (
     <div className={`${styles.panel}`}>
         <div className={`${styles.content} ${reverse_row && styles.panel_reverse}`}>
@@ -38,8 +39,11 @@ const TextWithImage = ({ heading, excerpt, image, reverse_row }: ITextWithImage)
             </div>
             </div>
             <div className={styles.image}>
-              {image?.asset?._ref &&
-                <Image width={500} height={500} src={urlForImage(image.asset._ref).url()} alt={image.alt} />
+              {video?.asset?._ref &&
+                <video width={500} height={500} controls preload="none">
+                  {/* <source src={urlForImage(video.asset._ref).url()} type="video/mp4" /> */}
+                  Your browser does not support the video tag.
+                </video>
               }
             </div>
         </div>
@@ -47,4 +51,4 @@ const TextWithImage = ({ heading, excerpt, image, reverse_row }: ITextWithImage)
   );
 };
 
-export default TextWithImage;
+export default TextWithVideo;

@@ -1,12 +1,12 @@
 import React from "react";
-import { urlFor } from "@/lib/api";
+import { urlForImage } from "@/lib/api";
 import { IHero } from "@/lib/types";
 import style from "./hero.module.css";
 
 const Hero = ({ heading, tagline, image }: IHero) => {
 
     return (
-        <header className={style.hero} style={{backgroundImage: `url(${urlFor(image.asset._ref).url()})`}}>
+        <header className={style.hero} style={{backgroundImage: `url(${urlForImage(image.asset._ref).url()})`}}>
             <div className={style.content}>
                 {heading ?
                     <h1>{heading}</h1>
