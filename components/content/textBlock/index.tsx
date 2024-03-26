@@ -21,7 +21,6 @@ const components = {
 }
 
 const TextBlock = ({ heading, content, button, center }: ITextBlock) => {
-  
 
   return (
     <div className={styles.panel}>
@@ -35,10 +34,10 @@ const TextBlock = ({ heading, content, button, center }: ITextBlock) => {
               components={components}
             />
             </div>
-            {button?.internalLink?.reference._ref ?
+            {button?.internalLink ?
               <Link 
-                href={button.internalLink.reference._ref} 
-                as={button.internalLink.reference._ref} 
+                href={button.internalLink} 
+                as={button.internalLink} 
                 className={`btn primary ${styles.cta}`}
               >
                   {button.text}

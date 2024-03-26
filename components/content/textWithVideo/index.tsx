@@ -23,24 +23,25 @@ const components = {
 
 
 const TextWithVideo = ({ heading, excerpt, video, reverse_row }: ITextWithVideo) => {
-  console.log(video, 'sd')
   return (
     <div className={`${styles.panel}`}>
-        <div className={`${styles.content} ${reverse_row && styles.panel_reverse}`}>
+        <div className={`${styles.content} ${reverse_row ? styles.panel_reverse : ''}`}>
+          {heading || excerpt ?
             <div className={styles.block}>
-            {heading && <h3>{heading}</h3>}
-            <div
+              {heading && <h3>{heading}</h3>}
+              <div
                 className={styles.text}
-            >
-            <PortableText
-              value={excerpt}
-              components={components}
-            />
+              >
+                <PortableText
+                  value={excerpt}
+                  components={components}
+                />
+              </div>
             </div>
-            </div>
-            <div className={styles.image}>
+            : null }
+            <div className={`${styles.video} ${!heading || !excerpt ? styles.panel_full : ''}`}>
               {video?.asset?._ref &&
-                <video width={500} height={500} controls preload="none">
+                <video controls preload="none">
                   {/* <source src={urlForImage(video.asset._ref).url()} type="video/mp4" /> */}
                   Your browser does not support the video tag.
                 </video>

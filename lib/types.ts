@@ -107,11 +107,7 @@
         href: string;
         blank: boolean;
       };
-      internalLink?: {
-        reference: {
-          _ref: string;
-        }
-      }
+      internalLink?:  string;
     };
     center: boolean;
   }
