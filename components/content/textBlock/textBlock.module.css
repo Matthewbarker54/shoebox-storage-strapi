@@ -34,6 +34,10 @@
 	color: var(--primary-clr);
 }
 
+.content_block h2, .content_block h3 {
+	margin-top: 1.5rem;
+}
+
 .content_block a:hover {
 	text-decoration: underline;
 	box-shadow: none;

@@ -1,8 +1,8 @@
-// import Error404 from "next/error";
+
 import "../../../styles/globals.css"
 import Layout from "@/components/layout";
 import PageContent from '@/components/pageContent'
-import { getPageData, getMenuData } from '@/lib/api'
+import { getPageData, getMenuData } from '@/lib/query'
 
 export const generateStaticParams = async () => {
   const pages = await getPageData();
@@ -21,8 +21,10 @@ const paths = pages
 }
 
 async function getData(params: any) {
-  const page = await getPageData(params.slug[0]);
+  const slug = params?.slug && params.slug.join('/');
+  const page = await getPageData(slug);
   const general = await getMenuData()
+
   return {
         page,
         general
@@ -33,6 +35,7 @@ async function getData(params: any) {
 export default async function Template({ params }: any) {
   const data:any = await getData(params)
   // if (!data?.general) return <Error404 statusCode={404} />;
+
   return (
     <Layout general={data.general}>
       <PageContent content={data.page.pageBuilder} />

@@ -7,9 +7,28 @@ const builder = imageUrlBuilder(client)
 
 export const getPageData = async (slug?: string) => {
   const query = slug ? `*[_type == "page" && slug.current == '` + slug + `']` : `*[_type == "page"]`
-  const general = await client.fetch(groq`${query}`).then(res => res)
-  
-  return slug ? general[0] : general
+  let general = await client.fetch(groq`${query}`).then(async res => {
+    if (slug && res[0]) {
+      res[0]?.pageBuilder?.map(async (block: any, i: number) => {
+        if (block._type === 'textBlock' && block.button?.internalLink) {
+          res[0].pageBuilder[i] = {
+            ...block,
+            button: {
+              ...block.button,
+              internalLink: await urlForPage(block.button?.internalLink?.reference._ref).then(res => res),
+            }
+          }
+        }
+      })
+    }
+    return slug ? res[0] : res
+  })
+  return general
+}
+
+export const getHomeData = async () => {
+  const homeData = await client.fetch(`*[_type == "homepage"]`).then(res => res[0])
+  return homeData
 }
 
 export const getNavData = async () => {
@@ -20,6 +39,11 @@ export const getNavData = async () => {
 export const getFooterData = async () => {
   const linkData = await client.fetch(`*[_type == "footer"]`).then(res => res[0])
   return linkData
+}
+
+export const getMetaData = async () => {
+  const metaData = await client.fetch(`*[_type == "metaData"]`).then(res => res[0])
+  return metaData
 }
 
 
@@ -64,6 +88,7 @@ export const getLinksData = async (menu: any, type: string) => {
 }
 
 export const getMenuData = async () => {
+  const meta = await getMetaData().then(res => res)
   const nav = await getNavData().then(res => res)
   const footer = await getFooterData().then(res => res)
   const navLinks = await getLinksData(nav, 'nav').then(res => res)
@@ -71,6 +96,7 @@ export const getMenuData = async () => {
   const menuLinksSecond = await getLinksData(footer, 'footerTwo').then(res => res)
 
   return {
+    meta,
     nav: {
       ...nav,
       menuLink: navLinks,
@@ -83,6 +109,17 @@ export const getMenuData = async () => {
   }
 }
 
-export const urlFor = (source: string) => {
+export const urlForImage = (source: string) => {
   return builder.image(source)
 }
+
+export const urlForPage = async (ref: string) => {
+  const query = `*[_type == "page" && _id == '` + ref +`'] {
+    title,
+    slug
+  }`
+
+  const linkData = await client.fetch(query).then(res => res[0]?.slug?.current)
+  return linkData
+}
+

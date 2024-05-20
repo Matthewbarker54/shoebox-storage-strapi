@@ -54,9 +54,10 @@
   | IHero
   | IForm
   | ITextWithImage
-  | IPromotion
   | ITextBlock
   | ITextWithLocation
+  | IImageGallery
+  | ITextWithVideo
   | undefined;
 
   export interface IPage {
@@ -81,10 +82,12 @@
     reverse_row?: boolean,
   }
 
-  export interface IPromotion {
-    title: string,
-    link: string,
-    _type: 'promotion',
+  export interface ITextWithVideo {
+    heading: string,
+    excerpt: IContentArray,
+    _type: 'textWithVideo',
+    video: any,
+    reverse_row?: boolean,
   }
 
   export interface IForm {
@@ -100,7 +103,11 @@
     content: IContentArray;
     button: {
       text: string;
-      url: string;
+      link?: {
+        href: string;
+        blank: boolean;
+      };
+      internalLink?:  string;
     };
     center: boolean;
   }
@@ -131,3 +138,7 @@
     reverse_row?: boolean,
   }
   
+  export interface IImageGallery {
+    _type: 'gallery',
+    images: IImage[],
+  }

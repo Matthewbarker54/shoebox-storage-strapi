@@ -2,31 +2,9 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'nav',
-  title: 'Nav',
+  title: 'Navigation',
   type: 'document',
   fields: [
-    defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-    }),
-    defineField({
-      name: 'cta',
-      title: 'Primary cta',
-      type: 'object',
-      fields: [
-        {
-          name: 'text',
-          title: 'Button text',
-          type: 'string'
-        },
-        {
-          name: 'url',
-          title: 'Button URL',
-          type: 'string'
-        },
-      ],
-    }),
     defineField({
       name: 'logo',
       title: 'Logo',
@@ -49,6 +27,54 @@ export default defineType({
           ]
         }
       ]
+    }),
+    defineField({
+      name: 'button',
+      type: 'object',
+      title: 'Button',
+      fields: [
+        defineField({
+          name: 'text',
+          type: 'string',
+          title: 'Text',
+        }),
+        defineField({
+          name: 'link',
+          type: 'object',
+          title: 'External link',
+          fields: [
+            {
+              name: 'href',
+              type: 'url',
+              title: 'URL',
+              validation: Rule => Rule.uri({
+                scheme: ['http', 'https', 'mailto', 'tel']
+              })
+            },
+            {
+              title: 'Open in new tab',
+              name: 'blank',
+              type: 'boolean'
+            }
+          ]
+        }),
+        defineField({
+            name: 'internalLink',
+            type: 'object',
+            title: 'Internal link',
+            fields: [
+              {
+                name: 'reference',
+                type: 'reference',
+                title: 'Reference',
+                to: [
+                  { type: 'page' },
+                  // other types you may want to link to
+                ]
+              }
+            ]
+        }),
+      ],
     }),
   ]
 })

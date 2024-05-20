@@ -20,7 +20,7 @@ export const textWithIllustrationType = defineType({
       type: 'blockContent',
     }),
     defineField({
-      title: 'Place image on the left',
+      title: 'Place image on the left side',
       name: 'reverse_row',
       type: 'boolean'
     }),

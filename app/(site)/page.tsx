@@ -1,12 +1,12 @@
 // Import Client Component
 'use client'
 import "../../styles/globals.css"
-import { getMenuData, getPageData } from '@/lib/api'
+import { getMenuData, getHomeData } from '@/lib/query'
 import Layout from '@/components/layout';
 import PageContent from '@/components/pageContent';
  
-async function getHomeData() {
-    const page = await getPageData('homepage')
+async function getData() {
+    const page = await getHomeData()
     const general = await getMenuData()
     return {
           page,
@@ -16,7 +16,7 @@ async function getHomeData() {
  
 export default async function Page() {
     // Fetch data directly in a Server Component
-    const data:any = await getHomeData()
+    const data:any = await getData()
     // Forward fetched data to your Client Component
     return (
         <Layout general={data.general}>

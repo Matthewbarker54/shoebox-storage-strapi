@@ -21,6 +21,7 @@ const components = {
 }
 
 const TextBlock = ({ heading, content, button, center }: ITextBlock) => {
+
   return (
     <div className={styles.panel}>
         <div className={`${styles.content} ${center ? styles.contentCenter : null}`}>
@@ -33,12 +34,24 @@ const TextBlock = ({ heading, content, button, center }: ITextBlock) => {
               components={components}
             />
             </div>
-            {button?.url ?
-              <>
-                  <Link href={button.url} as={button.url} className={`btn primary ${styles.cta}`}>
-                      {button.text}
-                  </Link>
-              </>
+            {button?.internalLink ?
+              <Link 
+                href={button.internalLink} 
+                as={button.internalLink} 
+                className={`btn primary ${styles.cta}`}
+              >
+                  {button.text}
+              </Link>
+            : button?.link?.href ?
+              <Link 
+                href={button.link.href} 
+                as={button.link.href} 
+                className={`btn primary ${styles.cta}`} 
+                target={button.link.blank ? '_blank': ''}
+                rel="noreferrer"
+              >
+                {button.text}
+              </Link>
             : null}
         </div>
     </div>
