@@ -1,6 +1,6 @@
 import styles from "./textWithVideo.module.css";
 import { ITextWithVideo } from "@/lib/types";
-import { urlForImage } from "@/lib/api";
+import { urlForImage } from "@/lib/query";
 import { PortableText } from "@portabletext/react";
 
 

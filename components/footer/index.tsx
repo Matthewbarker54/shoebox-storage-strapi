@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 import style from "./footer.module.css";
-import { urlForImage } from "@/lib/api";
+import { urlForImage } from "@/lib/query";
 import { ILinks } from "@/lib/types";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";

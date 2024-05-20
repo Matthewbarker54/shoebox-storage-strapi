@@ -1,7 +1,7 @@
 // Import Client Component
 'use client'
 import "../../styles/globals.css"
-import { getMenuData, getHomeData } from '@/lib/api'
+import { getMenuData, getHomeData } from '@/lib/query'
 import Layout from '@/components/layout';
 import PageContent from '@/components/pageContent';
  

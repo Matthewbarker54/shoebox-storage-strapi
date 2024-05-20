@@ -1,5 +1,5 @@
 import React from "react";
-import { urlForImage } from "@/lib/api";
+import { urlForImage } from "@/lib/query";
 import { IHero } from "@/lib/types";
 import style from "./hero.module.css";
 

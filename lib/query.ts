@@ -122,3 +122,4 @@ export const urlForPage = async (ref: string) => {
   const linkData = await client.fetch(query).then(res => res[0]?.slug?.current)
   return linkData
 }
+

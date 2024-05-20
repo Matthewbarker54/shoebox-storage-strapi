@@ -2,7 +2,7 @@
 import "../../../styles/globals.css"
 import Layout from "@/components/layout";
 import PageContent from '@/components/pageContent'
-import { getPageData, getMenuData } from '@/lib/api'
+import { getPageData, getMenuData } from '@/lib/query'
 
 export const generateStaticParams = async () => {
   const pages = await getPageData();

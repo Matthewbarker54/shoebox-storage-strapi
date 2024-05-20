@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import style from "./nav.module.css";
-import { urlForImage } from "@/lib/api";
+import { urlForImage } from "@/lib/query";
 import Image from "next/image";
 
 const Nav = ({ menu }: any) => {

@@ -1,6 +1,6 @@
 import styles from "./textWithImage.module.css";
 import { ITextWithImage } from "@/lib/types";
-import { urlForImage } from "@/lib/api";
+import { urlForImage } from "@/lib/query";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 

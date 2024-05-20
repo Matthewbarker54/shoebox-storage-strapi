@@ -9,13 +9,14 @@ export default defineConfig({
     name: 'default',
     title: 'shoebox-storage',
 
-    projectId: 'sgx0hyut',
-    dataset: 'production',
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ? process.env.NEXT_PUBLIC_SANITY_PROJECT_ID : '',
+    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ? process.env.NEXT_PUBLIC_SANITY_DATASET : '',
     basePath: "/studio",
     schema: {
         types: schemaTypes,
       },
     plugins: [
+      // @ts-ignore
       structureTool({
         // @ts-ignore
         structure: settingsStructure(settingsType),

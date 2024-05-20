@@ -1,7 +1,7 @@
 'use client'
 import styles from "./imageGallery.module.css";
 import { IImageGallery } from "@/lib/types";
-import { urlForImage } from "@/lib/api";
+import { urlForImage } from "@/lib/query";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import {
